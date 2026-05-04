@@ -16,7 +16,7 @@ if __name__ == "__main__":
     data_builtin: CountingList[CountingOrdered[int]] = CountingList(
         [CountingOrdered(e) for e in raw_data]
     )
-    sortings.bubble_sort(data_builtin)
+    sortings.merge_sort_sort(data_builtin)
     print(
         f"Builtin Comps: {CountingOrdered.comparisons()}, Swaps: {CountingList.likely_swaps()}"
     )
