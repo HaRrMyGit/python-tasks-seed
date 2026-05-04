@@ -27,10 +27,10 @@ def bubble_sort(data):
     :type data: list[BasicType] or other indexable sequence[BasicType]
     """
 
-    
+
     def bubble(data):
         isSorted = False
-        while not sorted:
+        while not isSorted:
             isSorted = True
             for i in range(len(data)-1):
                 if data[i] > data[i + 1]: 
