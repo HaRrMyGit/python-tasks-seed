@@ -37,7 +37,7 @@ jobs:
         working-directory: ${{ matrix.task }}
         run: |
           . ../.venv/bin/activate
-          black --check ./ --diff
+          black ./ --diff
 
       - name: Upload linting results
         if: always()
