@@ -20,22 +20,36 @@ def builtin_sort(data):
 
 
 def bubble_sort(data):
+    """
+    Bubble sort
+
+    :param data: data to sort inplace
+    :type data: list[BasicType] or other indexable sequence[BasicType]
+    """
+
+    
     def bubble(data):
-        sorted = False
+        isSorted = False
         while not sorted:
-            sorted = True
+            isSorted = True
             for i in range(len(data)-1):
                 if data[i] > data[i + 1]: 
                     data[i], data[i + 1] = data[i + 1], data[i]
-                    sorted = False
+                    isSorted = False
     if isinstance(data, list):
         bubble(data)
     else:
         bubble(data._array)
 
 def merge_sort(data):
+    """
+    Merge sort
     
-    
+    :param data: data to sort inplace
+    :type data: list[BasicType] or other indexable sequence[BasicType]
+    """
+
+
     def _merge(left, right):
         merged = []
         i = j = 0
