@@ -30,19 +30,19 @@ def fatal_array():
 #     assert is_sorted
 
 
-def test_bubble_sort_array(fatal_array):
+def test_bubble_sort_array(fatal_array()):
     """
     Test bubble sort
     """
-    sortings.bubble_sort(fatal_array)
-    is_sorted = all(x <= y for x, y in pairwise(fatal_array))
+    sortings.bubble_sort(fatal_array())
+    is_sorted = all(x <= y for x, y in pairwise(fatal_array()))
     assert is_sorted
 
 
-def test_merge_sort_array(fatal_array):
+def test_merge_sort_array(fatal_array()):
     """
     Test standard library sorting
     """
-    sortings.merge_sort(fatal_array)
-    is_sorted = all(x <= y for x, y in pairwise(fatal_array))
+    sortings.merge_sort(fatal_array())
+    is_sorted = all(x <= y for x, y in pairwise(fatal_array()))
     assert is_sorted

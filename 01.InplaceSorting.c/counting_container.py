@@ -4,8 +4,8 @@ Counting container and value
 
 from __future__ import annotations
 from typing import Generic, TypeVar, Optional
-from beartype import beartype
 from functools import total_ordering
+from beartype import beartype
 
 T = TypeVar("T")
 
