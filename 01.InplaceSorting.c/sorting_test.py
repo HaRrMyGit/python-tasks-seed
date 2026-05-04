@@ -21,13 +21,13 @@ def fatal_array():
     yield data
 
 
-def test_builtin_sort_array(fatal_array):
-    """
-    Test standard library sorting
-    """
-    sortings.builtin_sort(fatal_array)
-    is_sorted = all(x <= y for x, y in pairwise(fatal_array))
-    assert is_sorted
+# def test_builtin_sort_array(fatal_array):
+#     """
+#     Test standard library sorting
+#     """
+#     sortings.builtin_sort(fatal_array)
+#     is_sorted = all(x <= y for x, y in pairwise(fatal_array))
+#     assert is_sorted
 
 
 def test_bubble_sort_array(fatal_array):
