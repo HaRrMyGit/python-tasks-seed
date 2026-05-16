@@ -21,7 +21,7 @@ def test_multiple_chunks_encode():
     Test longer encodes
     """
     assert base85ed.encode(b"Hello World!") == b"NM&qnZy;B1a%^NF"
-    assert base85ed.encode(b"1234567890") == b"F)}kWH8MesIWP"
+    assert base85ed.encode(b"1234567890") == b"F)}kWH8wXmIWP"
 
 def test_shorts_decode():
     """
@@ -36,7 +36,7 @@ def test_multiple_chunks_decode():
     """
     Test longer decodes
     """
-    assert base85ed.decode(b"F)}kWH8MesIWP") == b"1234567890"
+    assert base85ed.decode(b"F)}kWH8wXmIWP") == b"1234567890"
     assert base85ed.decode(b"NM&qnZy;B1a%^NF") == b"Hello World!"
 
 def test_raw_decodes():
