@@ -40,7 +40,7 @@ def decode(b: bytes):
     data: str = ''.join((b.decode('ascii')).split())
     result: bytearray = bytearray()
     for i in range(0, len(data), 5):
-        chunkLength = min(5, len(b) - i)
+        chunkLength = min(5, len(data) - i)
         chunk = data[i:min(i+5,len(data))] + "!" * (5 - chunkLength)
         num = 0
         for symbol in chunk:
