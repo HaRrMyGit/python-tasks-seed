@@ -40,9 +40,10 @@ def decode(b: bytes):
     data: str = ''.join((b.decode('ascii')).split())
     result: bytearray = bytearray()
     for i in range(0, len(data), 5):
-        chunk = data[i:min(i+5,len(data))] + "!" * (5 - min(5, len(data) - i))
+        chunkLength = (5 - min(5, len(data) - i))
+        chunk = data[i:min(i+5,len(data))] + "!" * chunkLength
         num = 0
         for symbol in chunk:
             num = num * 85 + REVERSED_ALPHABET[symbol]
-        result.extend(num.to_bytes(4, 'big')[:min(5, len(b) - i) - 1])
+        result.extend(num.to_bytes(4, 'big')[:chunkLength - 1])
     return bytes(result)

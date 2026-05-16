@@ -23,5 +23,5 @@ def test_shorts_decode():
     """
     assert base85ed.decode(b"F#") == b"1"
     assert base85ed.decode(b"F){") == b"12"
-    assert base85ed.decode(b"F)}j") == b"123"
+    assert base85ed.decode(b"NM&qnZy;B1\na%^NFZ7") == b"Hello, Base85!"
     assert base85ed.decode(b"F)}kW") == b"1234"
