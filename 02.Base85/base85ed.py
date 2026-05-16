@@ -8,7 +8,7 @@ from beartype import beartype
 
 ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\
 !#$%&()*+-;<=>?@^_`{|}~"  
-REVERSED_ALPHABET = {ord(c): i for i, c in enumerate(ALPHABET)}                          
+REVERSED_ALPHABET = {ch: i for i, ch in enumerate(ALPHABET)}                      
 
 @beartype
 def encode(b: bytes):
@@ -25,7 +25,8 @@ def encode(b: bytes):
         for _ in range(5):  
             encodedChunk.append(num % 85)
             num //= 85
-        result.extend([ALPHABET[d] for d in reversed(encodedChunk)[:1 + min(4, len(b)) - i]])
+        encodedChunk.reverse()
+        result.extend([ALPHABET[d] for d in encodedChunk[:1 + min(4, len(b)) - i]])
     return (''.join(result)).encode('ascii')
 
 
@@ -37,7 +38,7 @@ def decode(b: bytes):
     if not b:
         return b''
     data: str = b.decode('ascii')
-    result: list[bytes] = []
+    result: bytearray = bytearray()
     for i in range(0, len(b), 5):
         chunk = data[i:min(i+5,len(b))] + "!" * (5 - min(5, len(b) - i))
         num = 0
