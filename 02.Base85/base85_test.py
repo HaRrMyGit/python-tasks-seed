@@ -1,7 +1,6 @@
 """
 Unit tests for 02.Base85
 
-TODO: Add more tests!
 """
 
 import base85ed
