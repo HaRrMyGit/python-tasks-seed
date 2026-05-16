@@ -26,7 +26,7 @@ def encode(b: bytes):
             encodedChunk.append(num % 85)
             num //= 85
         encodedChunk.reverse()
-        result.extend([ALPHABET[d] for d in encodedChunk[:1 + min(4, len(b)) - i]])
+        result.extend([ALPHABET[d] for d in encodedChunk[:1 + min(4, len(b)) - 1]])
     return (''.join(result)).encode('ascii')
 
 
