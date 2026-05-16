@@ -37,10 +37,10 @@ def decode(b: bytes):
     """
     if not b:
         return b''
-    data: str = b.decode('ascii')
+    data: str = ''.join((b.decode('ascii')).split())
     result: bytearray = bytearray()
-    for i in range(0, len(b), 5):
-        chunk = data[i:min(i+5,len(b))] + "!" * (5 - min(5, len(b) - i))
+    for i in range(0, len(data), 5):
+        chunk = data[i:min(i+5,len(data))] + "!" * (5 - min(5, len(data) - i))
         num = 0
         for symbol in chunk:
             num = num * 85 + REVERSED_ALPHABET[symbol]
