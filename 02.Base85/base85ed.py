@@ -25,7 +25,7 @@ def encode(b: bytes):
         for _ in range(5):  
             encodedChunk.append(num % 85)
             num //= 85
-        result.extend([ALPHABET[d] for d in reversed(encodedChunk[:1 + min(4, len(b)) - i])])
+        result.extend([ALPHABET[d] for d in reversed(encodedChunk)[:1 + min(4, len(b)) - i]])
     return (''.join(result)).encode('ascii')
 
 
@@ -36,10 +36,10 @@ def decode(b: bytes):
     """
     if not b:
         return b''
-    b = b.decode('ascii')
+    data: str = b.decode('ascii')
     result: list[bytes] = []
     for i in range(0, len(b), 5):
-        chunk = b[i:min(i+5,len(b))] + "!" * (5 - min(5, len(b) - i))
+        chunk = data[i:min(i+5,len(b))] + "!" * (5 - min(5, len(b) - i))
         num = 0
         for symbol in chunk:
             num = num * 85 + REVERSED_ALPHABET[symbol]
