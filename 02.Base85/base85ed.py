@@ -26,7 +26,7 @@ def encode(b: bytes):
             encodedChunk.append(num % 85)
             num //= 85
         result.extend([ALPHABET[d] for d in reversed(encodedChunk[:1 + min(4, len(b)) - i])])
-    return bytes(''.join(result))
+    return (''.join(result)).encode('ascii')
 
 
 @beartype
@@ -36,7 +36,8 @@ def decode(b: bytes):
     """
     if not b:
         return b''
-    result = []
+    b = b.decode('ascii')
+    result: list[bytes] = []
     for i in range(0, len(b), 5):
         chunk = b[i:min(i+5,len(b))] + "!" * (5 - min(5, len(b) - i))
         num = 0
